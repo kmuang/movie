@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Reviews</title>
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {}
+            }
+        };
+
+        // Toggle dark mode
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        }
+
+        // Apply saved theme or system preference on load
+        window.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('theme') === 'dark' || 
+                (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 font-sans min-h-screen transition-colors duration-300">
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-gray-100">Movie Reviews</h1>
+            <button onclick="toggleDarkMode()" class="bg-black-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 rounded-md hover:bg-gray-300 dark:hover:bg-blue-600 transition">
+                 🌙 
+            </button>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Movie 1 -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                <img src="img/hp.jpg" alt="The Shawshank Redemption" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">The Shawshank Redemption</h2>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm md:text-base">A powerful story of hope and friendship. Andy Dufresne’s journey in prison is both heart-wrenching and inspiring. The performances by Tim Robbins and Morgan Freeman are phenomenal.</p>
+                    <div class="flex items-center">
+                        <span class="text-yellow-500">★★★★★</span>
+                        <span class="ml-2 text-gray-500 dark:text-gray-400">5/5</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Movie 2 -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                <img src="img/hp.jpg" alt="Inception" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">Inception</h2>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm md:text-base">A mind-bending thriller that explores dreams within dreams. Christopher Nolan’s direction and Leonardo DiCaprio’s performance keep you guessing until the end.</p>
+                    <div class="flex items-center">
+                        <span class="ml-2 text-gray-500 dark:text-gray-400">4/5</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Movie 3 -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                <img src="img/hp.jpg" alt="The Grand Budapest Hotel" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">The Grand Budapest Hotel</h2>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm md:text-base">Wes Anderson’s quirky and visually stunning film. The storytelling is whimsical, with a stellar cast bringing a colorful world to life.</p>
+                    <div class="flex items-center">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
